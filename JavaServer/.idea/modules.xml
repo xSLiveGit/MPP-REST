@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/JavaServer.iml" filepath="$PROJECT_DIR$/.idea/modules/JavaServer.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/JavaServer_main.iml" filepath="$PROJECT_DIR$/.idea/modules/JavaServer_main.iml" group="JavaServer" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/JavaServer_test.iml" filepath="$PROJECT_DIR$/.idea/modules/JavaServer_test.iml" group="JavaServer" />
+    </modules>
+  </component>
+</project>

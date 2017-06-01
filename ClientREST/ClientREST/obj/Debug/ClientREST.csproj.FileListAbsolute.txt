@@ -1,0 +1,8 @@
+D:\Faculta\an2\sem 2\SGBD\Lab3\ClientREST\ClientREST\bin\Debug\ClientREST.exe.config
+D:\Faculta\an2\sem 2\SGBD\Lab3\ClientREST\ClientREST\obj\Debug\ClientREST.csprojResolveAssemblyReference.cache
+D:\Faculta\an2\sem 2\SGBD\Lab3\ClientREST\ClientREST\bin\Debug\ClientREST.exe
+D:\Faculta\an2\sem 2\SGBD\Lab3\ClientREST\ClientREST\bin\Debug\ClientREST.pdb
+D:\Faculta\an2\sem 2\SGBD\Lab3\ClientREST\ClientREST\bin\Debug\Newtonsoft.Json.dll
+D:\Faculta\an2\sem 2\SGBD\Lab3\ClientREST\ClientREST\bin\Debug\Newtonsoft.Json.xml
+D:\Faculta\an2\sem 2\SGBD\Lab3\ClientREST\ClientREST\obj\Debug\ClientREST.exe
+D:\Faculta\an2\sem 2\SGBD\Lab3\ClientREST\ClientREST\obj\Debug\ClientREST.pdb
