@@ -1,0 +1,184 @@
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+
+    <script src="jquery-3.2.1.min.js"></script>
+    <script type="application/javascript">
+        var cont;
+        var getType = 0;
+        function getAllFilteredByCathegory() {
+            cont.empty();
+        }
+
+        function del(itemIndex) {
+            console.log("delete:" + itemIndex.toString());
+            $.ajax({
+                    url: "delete.php",
+                    type: "get",
+                    dataType: "json",
+                    data: {
+                        "id" : itemIndex
+                    },
+                    success: function () {
+                        cont.innerHTML = "";
+                        console.log(out);
+                        console.log("success");
+                        $("#get_all_button").click();
+                    },
+                    error: function (out,e,m) {
+                        alert(m);
+                    }
+                }
+            );
+        }
+
+        function up(itemIndex){
+            console.log("update" + itemIndex.toString());
+            var author;
+            var name;
+            var pages;
+            var lended;
+            var genre;
+            console.log("add");
+            author = $("#author_field").val();
+            name = $("#name_field").val();
+            pages = $("#pages_field").val();
+            //lended = $("#lended_field").val();
+            genre = $("#genre_field").val();
+            console.log(author  + "  " + name + " " + pages + " " + lended + " " + genre);
+            $.ajax({
+                    url: "update.php",
+                    type: "get",
+                    data: {
+                        "name" : name,
+                        "author" : author,
+                        "pages" : pages,
+                        "lended" : 0,
+                        "genre" : genre,
+                        "id" : itemIndex
+                    },
+                    success: function (out) {
+                        console.log(out);
+//                        $("#get_all_button").click();
+
+                            $("#get_all_button").click();
+
+                    },
+                    error: function (out,t,e) {
+                        console.log(e);
+
+                        alert("eroare la adaugare");
+                    }
+                }
+            );
+        }
+
+
+        function constructByList(out){
+            var string;
+            string = string + "<table><tr><th>id</th><th>team1</th><th>team2</th><th>stage</th><th>tickets</th><th>price</th></tr>";
+
+            out.forEach(function (item,index) {
+                string = string +  "<tr>";
+                string = string + "<td>" + item.id + "</td>";
+                string = string + "<td>" + item.team1 + "</td>";
+                string = string + "<td>" + item.team2 + "</td>";
+                string = string + "<td>" + item.stage +  "</td>";
+                string = string + "<td>" + item.tickets + "</td>";
+                string = string + "<td>" + item.price + "</td>";
+
+                string = string + "<td> <button class=\"deleteButton\" id=\"d" + item.id    +"\" onclick=del(" + item.id + ")>" + "delete" + "</button> </td>";
+                string = string + "<td> <button class=\"updateButton\" id=\"u" + item.id  + "\" onclick=up(" + item.id + ")>" + "update" +"</button> </td>";
+                string = string +"</tr>";
+            });
+
+            string = string + "</table>";
+            cont.html(string);
+        }
+
+        $(document).ready(function () {
+            cont = $("#content")
+
+            $("#get_all_button").click(function () {
+                console.log("AICI");
+                var string;
+                $.ajax({
+                        url: "getall.php",
+                        type: "get",
+                        dataType: "json",
+                        data: {},
+                        success: function (out) {
+                            cont.innerHTML = "";
+                            console.log(out);
+                            console.log("success");
+                            constructByList(out);
+                            getType = 1;
+                        },
+                        error: function (out) {
+                            console.log(currentId);
+                            alert("eroare");
+                        }
+                    }
+                );
+            });
+
+            $("#add_button").click(function () {
+                var team1;
+                var team2;
+                var stage;
+                var tickets;
+                var price;
+                console.log("add");
+                team1 = $("#team1_field").val();
+                team2 = $("#team2_field").val();
+                stage = $("#stage_field").val();
+                tickets = $("#tickets_field").val();
+                price = $("#price_field").val();
+                $.ajax({
+                        url: "add.php",
+                        type: "post",
+                        data: {
+                            "team1" : team1,
+                            "team2" : team2,
+                            "stage" : stage,
+                            "tickets" : tickets,
+                            "price" : price
+                        },
+                        success: function (out) {
+                            console.log(out);
+                            $("#get_all_button").click();
+                        },
+                        error: function (out,t,e) {
+                            console.log(e);
+                            alert("eroare la adaugare");
+                        }
+                    }
+                );
+            })
+
+
+        });
+    </script>
+
+
+</head>
+<body>
+
+
+<button title="getAll" id="get_all_button" class="button">Get all</button>
+<br>
+<button title="add" id="add_button" class="button">Add</button>
+<br>
+team1:   <input type="text" id="team1_field"><br>
+team2:   <input type="text" id="team2_field"><br>
+Stage:   <input type="text" id="stage_field" ><br>
+Tickets: <input type="text" id="tickets_field"><br>
+Price:   <input type="text" id="price_field"><br>
+<br>
+
+<div id="content">
+    <p>da</p>
+</div>
+</body>
+</html>
